@@ -1,0 +1,16 @@
+
+    <form action="/index/edit/<%=task.id%>?_method=PUT" method="POST">
+        <div>
+          <label for="header">Task Name</label>
+          <input type="text" name="header" id="header" value="<%=task.header %>" required>
+        </div>
+      <br>
+        <div>
+          <label for="description">Description</label>
+          <textarea name="description" maxlength="140" height="100px" id="description" required>
+              <%=task.description%>
+          </textarea>
+        </div>
+        <br>
+        <button type="submit">Change</button>
+      </form>

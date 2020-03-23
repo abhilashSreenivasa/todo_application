@@ -14,8 +14,8 @@
 </form>
 
 <% if(tasks[0]!=null){tasks.forEach( task=> { %>
-  <div><%= task.header %></div><br>
+ <a href='/index/edit/<%=task.id%>'> <div><%= task.header %></div></a><br>
   <div><%= task.description %></div>
   <%-include("./partials/deleteForm",
-  {url: `${task.id}`}) %>
+  {url: `/${task.id}`}) %>
   <% })} %>
