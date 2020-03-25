@@ -30,9 +30,9 @@ router.delete('/:id', async (req, res) => {
       const allTasks=await Task.find({})
       res.render('index',{tasks:allTasks})
      
-      
+
     } catch {
-        alert('in delete catch')
+       
         res.redirect('/')
     }
   })
@@ -50,7 +50,7 @@ router.post('/index',async(req,res)=>{
 
     }
     catch{
-        alert('in catch')
+       
         res.render('index',{
             errorMessage:"Something went wrong,try again!"
         })
@@ -63,10 +63,11 @@ router.put('/index/edit/:id',async(req,res)=>{
         const editedTask=await Task.findById(req.params.id)
         editedTask.header=req.body.header
         editedTask.description=req.body.description
-        console.log(editedTask)
+       
         await editedTask.save()
         const allTasks=await Task.find({})
         res.render('index',{tasks:allTasks})
+    
    }
    catch{
     res.render('edit',{
@@ -80,9 +81,10 @@ router.get('/index/edit/:id',async(req,res)=>{
     try{
         const editTask=await Task.findById(req.params.id)
         res.render('edit',{task:editTask})
+        
     }
     catch{
-        res.redirect('/index',{errorMessage:"Something went wrong,Couldn't edit"})
+        res.redirect('/')
     }
 })
 

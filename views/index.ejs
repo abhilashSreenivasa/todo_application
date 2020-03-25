@@ -1,21 +1,30 @@
-
-<form action="/index" method="post">
-  <div>
-    <label for="header">Task Name</label>
-    <input type="text" name="header" id="header" required>
+<div class="main">
+<form class="task-form" action="/index" method="post">
+  <div class="task-form-header">
+    <label class="task-form-label" for="header">Task Name</label>
+    <input class="task-form-text" type="text" name="header" id="header" required>
   </div>
-<br>
-  <div>
-    <label for="description">Description</label>
-    <textarea name="description" maxlength="140" height="100px" id="description" required>limit 140 Characters..</textarea>
+  <div class="task-form-description">
+    <label  class="task-form-label" for="description">Description</label>
+    <textarea class="task-form-description-textarea" name="description" maxlength="140" height="100px" id="description" required>limit 140 Characters..</textarea>
   </div>
-  <br>
-  <button type="submit">Add</button>
+  <div class="submit-btn">
+  <button class="submit-btn-inside" type="submit">Add task</button>
+</div>
 </form>
 
+
+
+<div class="list-task">
 <% if(tasks[0]!=null){tasks.forEach( task=> { %>
- <a href='/index/edit/<%=task.id%>'> <div><%= task.header %></div></a><br>
-  <div><%= task.description %></div>
+   <div class="list-task-set">
+   <a class="list-task-header" href='/index/edit/<%=task.id%>'> <div ><%= task.header %></div></a>
+  <div class="list-task-description"><%= task.description %></div>
   <%-include("./partials/deleteForm",
   {url: `/${task.id}`}) %>
+</div>
+
+
   <% })} %>
+</div>
+</div>
